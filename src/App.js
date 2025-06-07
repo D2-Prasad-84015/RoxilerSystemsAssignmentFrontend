@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+import { ToastContainer } from "react-toastify";
+import Dashboard from "./components/Dashboard/Dashboard";
+import AdminStores from "./components/Pages/AdminStores";
+import Users from "./components/Pages/Users";
+import UpdatePassword from "./components/Pages/UpdatePassword";
+import UserStores from "./components/Pages/UserStores";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/signup" element={<Register />}/>
+        <Route path="/signin" element={<Login />}/>
+        <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/admin/stores" element={<AdminStores />}/>
+        <Route path="/admin/users" element={<Users />}/>
+        <Route path="/password/update" element={<UpdatePassword />}/>
+        <Route path="/stores" element={<UserStores />}/>
+      </Routes>
+      <ToastContainer/>
     </div>
   );
 }
